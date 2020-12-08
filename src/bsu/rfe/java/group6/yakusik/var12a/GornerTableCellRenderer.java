@@ -4,8 +4,8 @@ import java.awt.*;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
-import java.swing.*;
-import java.swing.table.TableCellRenderer;
+import javax.swing.*;
+import javax.swing.table.TableCellRenderer;
 
 public class GornerTableCellRenderer implements TableCellRenderer{
     private String needle = null;
@@ -27,7 +27,7 @@ public class GornerTableCellRenderer implements TableCellRenderer{
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int col){
         String formattedDouble = formatter.format(value);
         label.setText(formattedDouble);
-        if (col == 0 && needle != null && needle.equals(formattedDouble)){
+        if ((col == 0 || col == 1 ) && needle != null && needle.equals(formattedDouble)){
             panel.setBackground(Color.RED);
         } else {
             panel.setBackground(Color.WHITE);

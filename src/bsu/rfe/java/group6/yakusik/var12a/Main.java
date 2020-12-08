@@ -1,8 +1,8 @@
 package bsu.rfe.java.group6.yakusik.var12a;
 
 import java.awt.*;
+import javax.swing.*;
 import java.io.*;
-import java.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -34,18 +34,18 @@ public class Main extends JFrame {
         this.coefficients = coefficients;
 
         setSize(WIDTH, HEIGHT);
-        ToolKit kit = Toolkit.getDefaultToolkit();
+        Toolkit kit = Toolkit.getDefaultToolkit();
         setLocation((kit.getScreenSize().width - WIDTH)/2,
                     (kit.getScreenSize().height - HEIGHT)/2);
 
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
         JMenu fileMenu = new JMenu("Файл");
-        setJMenuBar(fileMenu);
+        menuBar.add(fileMenu);
         JMenu tableMenu = new JMenu("Таблица");
-        setJMenuBar(tableMenu);
+        menuBar.add(tableMenu);
         JMenu aboutMenu = new JMenu("Справка");
-        setJMenuBar(aboutMenu);
+        menuBar.add(aboutMenu);
 
         Action aboutAuthorAction = new AbstractAction("О программе") {
             @Override
@@ -128,7 +128,7 @@ public class Main extends JFrame {
             hboxRange.add(textFieldStep);
             hboxRange.add(Box.createHorizontalGlue());
             hboxRange.setPreferredSize(new Dimension(new Double(hboxRange.getMaximumSize().getWidth()).intValue(), new Double(hboxRange.getMinimumSize().getHeight()).intValue()*2));
-            getContentPane().add(hboxRange, BorderLayout.NORTH);
+            getContentPane().add(hboxRange, BorderLayout.SOUTH);
 
             JButton buttonCalc = new JButton("Вычислить");
         buttonCalc.addActionListener(new ActionListener() {
@@ -140,8 +140,7 @@ public class Main extends JFrame {
                     Double step = Double.parseDouble(textFieldStep.getText());
                     data = new GornerTableModel(from, to, step, Main.this.coefficients);
                     JTable table = new JTable(data);
-                    table.setDefaultRenderer(Double.class, renderer);
-                    table.setRowHeight(30);
+                    table.setDefaultRenderer(Double.class, renderer);                    table.setRowHeight(30);
                     hBoxResult.removeAll();
                     hBoxResult.add(new JScrollPane(table));
                     getContentPane().validate();
@@ -179,7 +178,7 @@ public class Main extends JFrame {
         hboxButtons.add(buttonReset);
         hboxButtons.add(Box.createHorizontalGlue());
         hboxButtons.setPreferredSize(new Dimension(new Double(hboxButtons.getMaximumSize().getWidth()).intValue(), new Double(hboxButtons.getMinimumSize().getHeight()).intValue()*2));
-        getContentPane().add(hboxButtons, BorderLayout.SOUTH);
+        getContentPane().add(hboxButtons, BorderLayout.NORTH);
 
         hBoxResult = Box.createHorizontalBox();
         hBoxResult.add(new JPanel());

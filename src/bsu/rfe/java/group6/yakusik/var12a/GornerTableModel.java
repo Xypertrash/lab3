@@ -58,7 +58,7 @@ public class GornerTableModel extends AbstractTableModel {
                 for(int i = 0; i < coefficients.length; i++){
                     result += Math.pow(x,coefficients.length-1-i)*coefficients[i];
                 }
-                if (result > 0) {return parity = true};
+                if (result > 0) {return parity = true;}
                 else return false;
             }
         }
@@ -75,7 +75,7 @@ public class GornerTableModel extends AbstractTableModel {
         }
     }
     @Override
-    public class<?> getColumnClass(int columnIndex) {
+    public Class<?> getColumnClass(int columnIndex) {
         switch(columnIndex){
             case 0:
             case 1:
